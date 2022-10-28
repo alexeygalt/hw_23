@@ -21,15 +21,17 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 @perform_query_ns.route('/')
 class PerformQuery(Resource):
     def post(self):
-        # take data from Body json
-        rq = request.json
+        # take data from Body query
+        rq = request.args.to_dict()
+        # take data from Body query
         if not rq:
             # take data from form-data
             rq = request.form.to_dict()
         if not rq:
-            # take data from query
-            rq = request.args.to_dict()
-            print(rq)
+            # take data from json
+            rq = request.json
+
+        print(rq)
         filename = rq["file_name"]
 
         if not os.path.exists(os.path.join(DATA_DIR, filename)):
