@@ -26,7 +26,10 @@ class PerformQuery(Resource):
         if not rq:
             # take data from form-data
             rq = request.form.to_dict()
-
+        if not rq:
+            # take data from query
+            rq = request.args.to_dict()
+            print(rq)
         filename = rq["file_name"]
 
         if not os.path.exists(os.path.join(DATA_DIR, filename)):
