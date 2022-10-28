@@ -21,9 +21,9 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 @perform_query_ns.route('/')
 class PerformQuery(Resource):
     def post(self):
-        # take data from Body query
+        # take data from  query
         rq = request.args.to_dict()
-        # take data from Body query
+
         if not rq:
             # take data from form-data
             rq = request.form.to_dict()
