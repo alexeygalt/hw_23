@@ -37,8 +37,8 @@ def get_result(data: dict, file: Iterator) -> list:
 
     while command in data.keys() and value in data.keys():
         if command in data.keys():
-            result = do_command(data[command], data[value], file)
-            file = result
+            file = do_command(data[command], data[value], file)
+
         count += 1
         command = 'cmd' + str(count)
         value = 'value' + str(count)
